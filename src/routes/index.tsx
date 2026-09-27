@@ -246,16 +246,37 @@ function Portfolio() {
   const [activeCert, setActiveCert] = useState<string | null>(null);
 
   useEffect(() => {
+    const ratios = new Map<number, number>();
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (!visible) return;
-        const index = Number((visible.target as HTMLElement).dataset["projectIndex"]);
-        if (!Number.isNaN(index)) setActiveProject(index);
+        let changed = false;
+        entries.forEach((entry) => {
+          const index = Number((entry.target as HTMLElement).dataset["projectIndex"]);
+          if (!Number.isNaN(index)) {
+            if (entry.isIntersecting) {
+              ratios.set(index, entry.intersectionRatio);
+            } else {
+              ratios.delete(index);
+            }
+            changed = true;
+          }
+        });
+
+        if (changed && ratios.size > 0) {
+          let bestIndex = -1;
+          let maxRatio = -1;
+          ratios.forEach((ratio, index) => {
+            // Prefer the item with the highest ratio.
+            // If there's a tie (e.g., both are 1.0), prefer the item further down the list.
+            if (ratio > maxRatio || (ratio === maxRatio && index > bestIndex)) {
+              maxRatio = ratio;
+              bestIndex = index;
+            }
+          });
+          if (bestIndex !== -1) setActiveProject(bestIndex);
+        }
       },
-      { rootMargin: "-20% 0px -15% 0px", threshold: [0, 0.15, 0.35, 0.6] },
+      { rootMargin: "-15% 0px -15% 0px", threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] },
     );
 
     projectRefs.current.forEach((project) => {
@@ -460,22 +481,21 @@ function Portfolio() {
 
         <div className="mt-16 grid grid-cols-[18px_minmax(0,1fr)] gap-4 sm:grid-cols-[24px_minmax(0,1fr)] sm:gap-8">
           <aside aria-label="Project scroll progress" className="relative">
-            <div className="sticky top-[23vh] h-[54vh] max-h-[520px] min-h-80">
-              <div className="absolute left-1/2 top-1 bottom-1 w-px -translate-x-1/2 bg-border">
-                <div ref={progressRef} className="w-full bg-primary shadow-[0_0_12px_var(--glow)] transition-[height] duration-500" />
-              </div>
-              <div className="relative flex h-full flex-col items-center justify-between">
-                {projects.map((project, index) => (
-                  <a
-                    key={project.title}
-                    href={`#project-${index + 1}`}
-                    aria-label={`Jump to ${project.title}`}
-                    aria-current={index === activeProject ? "step" : undefined}
-                    className={`z-10 size-3 rounded-full border transition-all duration-300 ${index <= activeProject ? "dot-active" : "dot-idle"}`}
-                  />
-                ))}
-              </div>
+            {/* Full-height track line */}
+            <div className="absolute left-1/2 inset-y-0 w-px -translate-x-1/2 bg-border">
+              <div ref={progressRef} className="w-full bg-primary shadow-[0_0_12px_var(--glow)] transition-[height] duration-700" />
             </div>
+            {/* Dots positioned proportionally along the full height */}
+            {projects.map((project, index) => (
+              <a
+                key={project.title}
+                href={`#project-${index + 1}`}
+                aria-label={`Jump to ${project.title}`}
+                aria-current={index === activeProject ? "step" : undefined}
+                style={{ top: `${(index / (projects.length - 1)) * 100}%` }}
+                className={`absolute left-1/2 z-10 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full border transition-all duration-300 ${index <= activeProject ? "dot-active" : "dot-idle"}`}
+              />
+            ))}
           </aside>
           <div className="space-y-20 sm:space-y-28">
           {projects.map((project, index) => (
