@@ -76,7 +76,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "viewport", content: "width=1280, initial-scale=0.5" },
       { title: "Omar Badawy — Flutter Developer" },
       { name: "description", content: "Flutter developer portfolio of Omar Badawy." },
       { name: "author", content: "Omar Badawy" },
