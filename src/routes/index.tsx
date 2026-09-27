@@ -14,20 +14,42 @@ import {
   Send,
   ShieldCheck,
   Smartphone,
+  X,
+  ScrollText,
 } from "lucide-react";
 
-import heroPhoto from "@/assets/omar-mobile-developer-portrait.png.asset.json";
-import heroCutout from "@/assets/omar-cutout.png.asset.json";
-import flutterLogo from "@/assets/flutter-logo-transparent.png.asset.json";
-import bookeCover from "@/assets/covers-uploaded/booke-cover.png.asset.json";
-import leoClinicCover from "@/assets/covers-uploaded/leoclinic-cover.png.asset.json";
-import marketoCover from "@/assets/covers-uploaded/marketo-cover.png.asset.json";
-import newsCover from "@/assets/covers-uploaded/newscloud-cover.png.asset.json";
-import scanovaCover from "@/assets/covers-uploaded/scanova-cover.png.asset.json";
+import heroPhoto from "@/assets/omar-mobile-developer.jpg";
+import heroCutout from "@/assets/covers/omar-cutout.png";
+import flutterLogo from "@/assets/covers/flutter-logo-transparent.png";
+import bookeCover from "@/assets/covers/cover.png";
+import leoClinicCover from "@/assets/covers/leoclinic-cover.png";
+import marketoCover from "@/assets/covers/Design e-commerce app cover.png";
+import newsCover from "@/assets/covers/Design NewsCloud App Cover.png";
+import scanovaCover from "@/assets/covers/scanovacoer.png";
 import chatCover from "@/assets/covers/chat.jpg";
 import paymentCover from "@/assets/covers/payment.jpg";
 import todoCover from "@/assets/covers/todo.jpg";
 import { Button } from "@/components/ui/button";
+
+// Certificate images
+import certITI from "@/assets/certificates/ITI.jpg";
+import certITIGenAI from "@/assets/certificates/ITI_GenAI.jpeg";
+import certDeepDive from "@/assets/certificates/Deep dive clean architecture-1.png";
+import certFlutterPayment from "@/assets/certificates/flutter payment-1.png";
+import certAdvancedFlutter from "@/assets/certificates/Advanced flutter-1.png";
+import certAttendance from "@/assets/certificates/cert_icpc_hr.jpg";
+import certFlutterDart from "@/assets/certificates/FlutterDart-1.png";
+import certUIUX from "@/assets/certificates/UI&UX.jpeg";
+import certNVIDIA from "@/assets/certificates/cert_nvidia_ai.png";
+import certPython101 from "@/assets/certificates/cert_python_satr.png";
+import certPythonBasics from "@/assets/certificates/python-1.png";
+import certDataStructures from "@/assets/certificates/DataSturctureLevel1-1.png";
+import certOOP from "@/assets/certificates/cert_oop_concepts.png";
+import certCppLevel1 from "@/assets/certificates/C++1-1.png";
+import certCppUdemy from "@/assets/certificates/C++_udemy.png";
+import certFreelancing from "@/assets/certificates/cert_freelancing_mahara.png";
+import certNvidiaLlm from "@/assets/certificates/cert_nvidia_llm.png";
+import certProblemSolving from "@/assets/certificates/algorithms&problemsolving.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -56,7 +78,7 @@ const projects = [
     category: "Healthcare platform",
     description:
       "A connected healthcare experience for patients and doctors, with appointments, records, and essential health information in one place.",
-    cover: leoClinicCover.url,
+    cover: leoClinicCover,
     repo: "https://github.com/omarbadawiii-91/LeoClinic_flutter",
     tags: ["Flutter", "Healthcare", "Dashboard"],
   },
@@ -65,7 +87,7 @@ const projects = [
     category: "E-commerce app",
     description:
       "A complete shopping experience with discovery, favorites, cart management, and a smooth checkout flow.",
-    cover: marketoCover.url,
+    cover: marketoCover,
     repo: "https://github.com/omarbadawiii-91/Marekto-E-commerce_App",
     tags: ["Flutter", "E-commerce", "REST API"],
   },
@@ -74,7 +96,7 @@ const projects = [
     category: "Digital library",
     description:
       "A personal digital library for browsing, reading, and discovering thousands of free books anytime.",
-    cover: bookeCover.url,
+    cover: bookeCover,
     repo: "https://github.com/omarbadawiii-91/Books_App",
     tags: ["Flutter", "Firebase", "Dart"],
   },
@@ -83,7 +105,7 @@ const projects = [
     category: "News application",
     description:
       "Real-time world news from trusted sources, organized into focused categories for fast, distraction-free reading.",
-    cover: newsCover.url,
+    cover: newsCover,
     repo: "https://github.com/omarbadawiii-91/NewsApp",
     tags: ["Flutter", "News API", "Clean UI"],
     contain: true,
@@ -120,45 +142,92 @@ const projects = [
     category: "Security application",
     description:
       "A mobile security tool that scans QR codes and links, then presents a clear safety report before users continue.",
-    cover: scanovaCover.url,
+    cover: scanovaCover,
     tags: ["Flutter", "Security", "QR Scanner"],
   },
 ];
 
-const learningArchive = [
-  "Mobile App Development using Flutter — ITI · Sep 2025 · 120hrs",
-  "Gen AI — ITI · Dec 2025",
-  "UI/UX Design — National Telecommunication Institute (NTI)",
-  "Deep Dive into Clean Architecture in Flutter [Arabic] — Udemy",
-  "Flutter Advanced: Bloc and MVVM Pattern [Arabic] — Udemy",
-  "Flutter Payment Integration: Stripe, PayPal & More [Arabic] — Udemy",
-  "Complete Flutter & Dart Development Course [Arabic] — Udemy",
-  "The C++ Learning Guide — Udemy",
-  "Building LLM Applications with Prompt Engineering",
-  "AI for All: From Basics to GenAI Practice — NVIDIA",
-  "Freelancing Basics — Mahara-Tech",
-  "Python 101 — Satr/Tuwaiq Academy",
-  "Python Programming Basics — Mahara-Tech AI Academy",
-  "Data Structures & Algorithms",
-  "Object Oriented Programming",
-  "C++ (Level 1 & 2)",
-  "Problem Solving",
-  "Git & GitHub",
+const learningArchive: { label: string; cert?: string }[] = [
+  { label: "Mobile App Development using Flutter — ITI · Sep 2025 · 120hrs", cert: certFlutterDart },
+  { label: "Gen AI — ITI · Dec 2025", cert: certITIGenAI },
+  { label: "UI/UX Design — National Telecommunication Institute (NTI)", cert: certUIUX },
+  { label: "Deep Dive into Clean Architecture in Flutter [Arabic] — Udemy", cert: certDeepDive },
+  { label: "Flutter Advanced: Bloc and MVVM Pattern [Arabic] — Udemy", cert: certAdvancedFlutter },
+  { label: "Flutter Payment Integration: Stripe, PayPal & More [Arabic] — Udemy", cert: certFlutterPayment },
+  { label: "Complete Flutter & Dart Development Course [Arabic] — Udemy", cert: certFlutterDart },
+  { label: "The C++ Learning Guide — Udemy", cert: certCppUdemy },
+  { label: "Building LLM Applications with Prompt Engineering", cert: certNvidiaLlm },
+  { label: "AI for All: From Basics to GenAI Practice — NVIDIA", cert: certNVIDIA },
+  { label: "Freelancing Basics — Mahara-Tech", cert: certFreelancing },
+  { label: "Python 101 — Satr/Tuwaiq Academy", cert: certPython101 },
+  { label: "Python Programming Basics — Mahara-Tech AI Academy", cert: certPythonBasics },
+  { label: "Data Structures & Algorithms", cert: certDataStructures },
+  { label: "Object Oriented Programming", cert: certOOP },
+  { label: "C++ (Level 1 & 2)", cert: certCppLevel1 },
+  { label: "Problem Solving", cert: certProblemSolving },
+  { label: "Git & GitHub" },
 ];
 
-const achievements = [
-  { title: "Mobile App Development · ITI", source: "ITI", topics: ["Dart", "OOP", "Flutter", "API Integration", "Bloc", "Firebase", "Git"] },
-  { title: "Deep Dive into Clean Architecture in Flutter", source: "Udemy", topics: ["Dependency Injection", "Reactive Programming", "SOLID", "Maintainable Flutter"] },
-  { title: "Flutter Payment Integration", source: "Udemy", topics: ["Stripe", "PayPal", "Payment Systems", "Gateway Selection"] },
-  { title: "Flutter Advanced: Bloc and MVVM", source: "Udemy", topics: ["Bloc", "State Management", "MVVM", "Design Patterns"] },
-  { title: "Gen AI", source: "ITI", topics: ["Python", "LangChain", "Prompt Engineering"] },
-  { title: "HR Member · ICPC Tanta Community", source: "ICPC", topics: ["Problem Solving", "Teamwork"] },
+const achievements: { title: string; source: string; topics: string[]; cert?: string }[] = [
+  { title: "Mobile App Development · ITI", source: "ITI", topics: ["Dart", "OOP", "Flutter", "API Integration", "Bloc", "Firebase", "Git"], cert: certITI },
+  { title: "Deep Dive into Clean Architecture in Flutter", source: "Udemy", topics: ["Dependency Injection", "Reactive Programming", "SOLID", "Maintainable Flutter"], cert: certDeepDive },
+  { title: "Flutter Payment Integration", source: "Udemy", topics: ["Stripe", "PayPal", "Payment Systems", "Gateway Selection"], cert: certFlutterPayment },
+  { title: "Flutter Advanced: Bloc and MVVM", source: "Udemy", topics: ["Bloc", "State Management", "MVVM", "Design Patterns"], cert: certAdvancedFlutter },
+  { title: "Gen AI", source: "ITI", topics: ["Python", "LangChain", "Prompt Engineering"], cert: certITIGenAI },
+  { title: "HR Member · ICPC Tanta Community", source: "ICPC", topics: ["Problem Solving", "Teamwork"], cert: certAttendance },
 ];
+
+/* ── Certificate lightbox modal ───────────────────────────────────── */
+function CertificateModal({ src, onClose }: { src: string; onClose: () => void }) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Certificate preview"
+      className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-8"
+      onClick={onClose}
+    >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+
+      {/* Close button */}
+      <button
+        onClick={onClose}
+        aria-label="Close certificate"
+        className="absolute right-4 top-4 z-10 flex size-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
+      >
+        <X className="size-4" />
+      </button>
+
+      {/* Image container — stops propagation so clicking image doesn't close */}
+      <div
+        className="relative z-10 max-h-[90vh] max-w-4xl w-full overflow-auto rounded border border-border bg-card shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <img
+          src={src}
+          alt="Certificate"
+          className="block w-full h-auto object-contain"
+        />
+      </div>
+    </div>
+  );
+}
 
 function FlutterLogo({ className }: { className?: string }) {
   return (
     <img
-      src={flutterLogo.url}
+      src={flutterLogo}
       alt=""
       aria-hidden="true"
       className={className}
@@ -174,6 +243,7 @@ function Portfolio() {
   const heroPortraitRef = useRef<HTMLDivElement>(null);
 
   const [activeProject, setActiveProject] = useState(0);
+  const [activeCert, setActiveCert] = useState<string | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -185,7 +255,7 @@ function Portfolio() {
         const index = Number((visible.target as HTMLElement).dataset["projectIndex"]);
         if (!Number.isNaN(index)) setActiveProject(index);
       },
-      { rootMargin: "-28% 0px -38% 0px", threshold: [0.15, 0.35, 0.6] },
+      { rootMargin: "-20% 0px -15% 0px", threshold: [0, 0.15, 0.35, 0.6] },
     );
 
     projectRefs.current.forEach((project) => {
@@ -246,6 +316,9 @@ function Portfolio() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
+      {activeCert && (
+        <CertificateModal src={activeCert} onClose={() => setActiveCert(null)} />
+      )}
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/85 backdrop-blur-xl">
         <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
           <a href="#top" className="min-w-0">
@@ -295,6 +368,7 @@ function Portfolio() {
           <div
             aria-hidden="true"
             className="hero-logo pointer-events-none absolute bottom-[9%] left-1/2 z-[1] -translate-x-1/2 select-none"
+            style={{ clipPath: "inset(0 0 22% 0)" }}
           >
             <FlutterLogo className="h-auto w-52 sm:w-64 md:w-72 lg:w-80" />
           </div>
@@ -305,7 +379,7 @@ function Portfolio() {
             className="hero-parallax hero-portrait absolute inset-x-0 bottom-0 z-10 flex items-end justify-center"
           >
             <img
-              src={heroCutout.url}
+              src={heroCutout}
               alt="Omar Mohamed Badawy, mobile app engineer"
               className="block h-auto w-full max-w-xs object-contain object-bottom [mask-image:linear-gradient(to_bottom,#000_70%,transparent_100%)] sm:max-w-sm md:max-w-md lg:max-w-lg"
             />
@@ -317,9 +391,9 @@ function Portfolio() {
           <div className="hero-in hero-in-3 space-y-1.5">
             <a
               className="block text-sm text-muted-foreground transition-colors hover:text-primary"
-              href="mailto:omarbadawiii91@gmail.com"
+              href="mailto:omarbadawe18@gmail.com"
             >
-              omarbadawiii91@gmail.com
+              omarbadawe18@gmail.com
             </a>
             <p className="text-sm text-muted-foreground">Cairo, Egypt</p>
           </div>
@@ -468,7 +542,7 @@ function Portfolio() {
               </p>
             </div>
             <div className="overflow-hidden border border-border bg-background">
-              <img src={scanovaCover.url} alt="Scanova mobile security product" className="aspect-[16/9] w-full object-cover transition-transform duration-700 hover:scale-[1.025]" />
+              <img src={scanovaCover} alt="Scanova mobile security product" className="aspect-[16/9] w-full object-cover transition-transform duration-700 hover:scale-[1.025]" />
               <div className="grid sm:grid-cols-3">
                 {[
                   { icon: ScanLine, title: "Scan", copy: "Use the camera, gallery, or a pasted link to check a source." },
@@ -521,10 +595,33 @@ function Portfolio() {
           </div>
           <div className="mt-14 grid gap-3 md:grid-cols-2">
             {achievements.map((achievement, index) => (
-              <article data-reveal key={achievement.title} className="reveal achievement-card border border-border p-5 sm:p-6">
+              <article
+                data-reveal
+                key={achievement.title}
+                className={`reveal achievement-card border border-border p-5 sm:p-6 ${
+                  achievement.cert ? "cursor-pointer" : ""
+                }`}
+                onClick={() => achievement.cert && setActiveCert(achievement.cert)}
+                role={achievement.cert ? "button" : undefined}
+                tabIndex={achievement.cert ? 0 : undefined}
+                onKeyDown={(e) => {
+                  if (achievement.cert && (e.key === "Enter" || e.key === " ")) {
+                    e.preventDefault();
+                    setActiveCert(achievement.cert);
+                  }
+                }}
+                aria-label={achievement.cert ? `View certificate: ${achievement.title}` : undefined}
+              >
                 <div className="flex items-start justify-between gap-4">
                   <h3 className="max-w-md text-sm font-semibold leading-6">{achievement.title}</h3>
-                  <span className="rounded-full border border-primary/40 px-2 py-1 font-mono text-[9px] uppercase text-primary">{achievement.source}</span>
+                  <div className="flex shrink-0 items-center gap-2">
+                    {achievement.cert && (
+                      <span className="flex items-center gap-1 font-mono text-[9px] uppercase text-primary opacity-60 transition-opacity group-hover:opacity-100">
+                        <ScrollText className="size-3" /> cert
+                      </span>
+                    )}
+                    <span className="rounded-full border border-primary/40 px-2 py-1 font-mono text-[9px] uppercase text-primary">{achievement.source}</span>
+                  </div>
                 </div>
                 <div className="mt-6 flex flex-wrap gap-x-5 gap-y-3 font-mono text-[9px] uppercase text-muted-foreground">
                   {achievement.topics.map((topic) => <span key={topic}>{topic}</span>)}
@@ -538,9 +635,27 @@ function Portfolio() {
           </div>
           <div className="mt-6 grid gap-3 md:grid-cols-2">
             {learningArchive.map((course, index) => (
-              <div key={course} className="group flex min-h-16 items-center gap-4 border border-border px-5 py-4 transition-colors hover:border-primary/40 hover:bg-secondary/60">
+              <div
+                key={course.label}
+                className={`group flex min-h-16 items-center gap-4 border border-border px-5 py-4 transition-colors hover:border-primary/40 hover:bg-secondary/60 ${
+                  course.cert ? "cursor-pointer" : ""
+                }`}
+                onClick={() => course.cert && setActiveCert(course.cert)}
+                role={course.cert ? "button" : undefined}
+                tabIndex={course.cert ? 0 : undefined}
+                onKeyDown={(e) => {
+                  if (course.cert && (e.key === "Enter" || e.key === " ")) {
+                    e.preventDefault();
+                    setActiveCert(course.cert);
+                  }
+                }}
+                aria-label={course.cert ? `View certificate: ${course.label}` : undefined}
+              >
                 <span className="font-mono text-[10px] text-primary">{String(index + 1).padStart(2, "0")}</span>
-                <p className="text-sm leading-6 text-muted-foreground transition-colors group-hover:text-foreground">{course}</p>
+                <p className="flex-1 text-sm leading-6 text-muted-foreground transition-colors group-hover:text-foreground">{course.label}</p>
+                {course.cert && (
+                  <ScrollText className="size-3.5 shrink-0 text-primary opacity-40 transition-opacity group-hover:opacity-100" />
+                )}
               </div>
             ))}
           </div>
@@ -554,15 +669,15 @@ function Portfolio() {
             <h2 className="mt-6 text-5xl font-semibold leading-[1.05] sm:text-7xl">Have a real problem <span className="text-primary">worth solving?</span></h2>
             <p className="mt-8 max-w-lg leading-8 text-muted-foreground">Tell me what you&apos;re building, what&apos;s getting in the way, or simply where you&apos;re headed. I&apos;ll get back to you with a thoughtful answer.</p>
             <div className="mt-9 space-y-4 text-sm">
-              <a className="flex items-center gap-3 transition-colors hover:text-primary" href="mailto:omarbadawiii91@gmail.com"><Mail className="size-4 text-primary" /> omarbadawiii91@gmail.com <ArrowUpRight className="size-3" /></a>
-              <p className="flex items-center gap-3 text-muted-foreground"><MapPin className="size-4 text-primary" /> Cairo, Egypt · Open for junior roles, internships, and freelance work</p>
+              <a className="flex items-center gap-3 transition-colors hover:text-primary" href="mailto:omarbadawe18@gmail.com"><Mail className="size-4 text-primary" /> omarbadawe18@gmail.com <ArrowUpRight className="size-3" /></a>
+              <p className="flex items-center gap-3 text-muted-foreground"><MapPin className="size-4 text-primary" /> Cairo, Egypt · Open for work</p>
               <div className="flex gap-3 pt-2">
                 <Button asChild size="icon" variant="outline"><a href="https://github.com/omarbadawiii-91" target="_blank" rel="noreferrer" aria-label="Omar on GitHub"><Github /></a></Button>
                 <Button asChild size="icon" variant="outline"><a href="https://www.linkedin.com/in/omar-mohamed-badawy/" target="_blank" rel="noreferrer" aria-label="Omar on LinkedIn"><Linkedin /></a></Button>
               </div>
             </div>
           </div>
-          <form className="border border-border p-6 sm:p-8" action="mailto:omarbadawiii91@gmail.com" method="post" encType="text/plain">
+          <form className="border border-border p-6 sm:p-8" action="https://formsubmit.co/omarbadawe18@gmail.com" method="POST">
             <div className="grid gap-7 sm:grid-cols-2">
               <label className="space-y-3 font-mono text-[10px] uppercase text-muted-foreground">Your name<input name="name" required placeholder="How should I call you?" className="w-full border-0 border-b border-border bg-transparent py-3 font-sans text-sm normal-case text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-primary" /></label>
               <label className="space-y-3 font-mono text-[10px] uppercase text-muted-foreground">Email<input name="email" type="email" required placeholder="you@company.com" className="w-full border-0 border-b border-border bg-transparent py-3 font-sans text-sm normal-case text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-primary" /></label>

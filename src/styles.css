@@ -251,17 +251,20 @@
 
 
 
-/* Project timeline dots */
-@utility dot-idle {
-  border-color: oklch(1 0 0 / 25%);
-  background: transparent;
-  box-shadow: none;
-}
+/* Project timeline dots — plain CSS rules so they're always emitted
+   (Tailwind's scanner can't see these names inside ternary expressions) */
+@layer utilities {
+  .dot-idle {
+    border-color: oklch(1 0 0 / 25%);
+    background: transparent;
+    box-shadow: none;
+  }
 
-@utility dot-active {
-  border-color: var(--color-primary);
-  background: var(--color-primary);
-  box-shadow: 0 0 12px 2px var(--glow);
+  .dot-active {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    box-shadow: 0 0 12px 2px var(--glow);
+  }
 }
 
 /* Soft reveal for sections entering the viewport */
