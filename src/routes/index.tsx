@@ -388,10 +388,10 @@ function Portfolio() {
           {/* === Layer 2: Official Flutter logo — transparent and centered behind Omar === */}
           <div
             aria-hidden="true"
-            className="hero-logo pointer-events-none absolute bottom-[9%] left-1/2 z-[1] -translate-x-1/2 select-none"
+            className="hero-logo pointer-events-none absolute bottom-[12%] left-1/2 z-[1] -translate-x-1/2 select-none"
             style={{ clipPath: "inset(0 0 22% 0)" }}
           >
-            <FlutterLogo className="h-auto w-52 sm:w-64 md:w-72 lg:w-80" />
+            <FlutterLogo className="h-auto w-[72vw] sm:w-64 md:w-72 lg:w-80" />
           </div>
 
           {/* === Layer 3: Person cutout — front, parallax === */}
