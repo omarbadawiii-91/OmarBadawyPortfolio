@@ -364,7 +364,7 @@ function Portfolio() {
 
       <section
         id="top"
-        className="hero-canvas relative isolate flex min-h-screen flex-col overflow-hidden px-6 pt-28 pb-10 sm:px-10 sm:pt-32 lg:px-16"
+        className="hero-canvas relative isolate flex min-h-[100svh] flex-col overflow-hidden px-6 pt-28 pb-10 sm:px-10 sm:pt-32 lg:px-16"
       >
         {/* Cyan spotlight glow */}
         <div
@@ -402,7 +402,7 @@ function Portfolio() {
             <img
               src={heroCutout}
               alt="Omar Mohamed Badawy, mobile app engineer"
-              className="block h-auto w-full max-w-xs object-contain object-bottom [mask-image:linear-gradient(to_bottom,#000_70%,transparent_100%)] sm:max-w-sm md:max-w-md lg:max-w-lg"
+              className="block h-auto w-full max-w-sm object-contain object-bottom [mask-image:linear-gradient(to_bottom,#000_70%,transparent_100%)] sm:max-w-sm md:max-w-md lg:max-w-lg"
             />
           </div>
         </div>
