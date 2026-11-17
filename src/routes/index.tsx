@@ -88,10 +88,10 @@ const projects = [
     title: "Leo Clinic",
     category: "Healthcare platform",
     description:
-      "A connected healthcare experience for patients and doctors, with appointments, records, and essential health information in one place.",
+      "A comprehensive digital healthcare platform built during my Flutter Internship with TechMastery. Connects patients, doctors, and clinics through an intuitive mobile app and administrative tablet dashboard — featuring doctor discovery, appointment scheduling, medical records management, and real-time clinic analytics.",
     cover: leoClinicCover,
     repo: "https://github.com/omarbadawiii-91/LeoClinic_flutter",
-    tags: ["Flutter", "Healthcare", "Dashboard"],
+    tags: ["Flutter", "Healthcare", "Dashboard", "TechMastery"],
   },
   {
     title: "Marketo",
