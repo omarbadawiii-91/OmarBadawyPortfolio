@@ -21,6 +21,7 @@ import {
 import heroPhoto from "@/assets/omar-mobile-developer.jpg";
 import heroCutout from "@/assets/covers/omar-cutout.png";
 import flutterLogo from "@/assets/covers/flutter-logo-transparent.png";
+import job4uCover from "@/assets/covers/job4u-cover.jpg";
 import bookeCover from "@/assets/covers/cover.png";
 import leoClinicCover from "@/assets/covers/leoclinic-cover.png";
 import marketoCover from "@/assets/covers/Design e-commerce app cover.png";
@@ -32,6 +33,7 @@ import todoCover from "@/assets/covers/todo.jpg";
 import { Button } from "@/components/ui/button";
 
 // Certificate images
+import certTechMastery from "@/assets/certificates/Tech_Mastery_Internship.png";
 import certITI from "@/assets/certificates/ITI.jpg";
 import certITIGenAI from "@/assets/certificates/ITI_GenAI.jpeg";
 import certDeepDive from "@/assets/certificates/Deep dive clean architecture-1.png";
@@ -73,6 +75,15 @@ export const Route = createFileRoute("/")({
 });
 
 const projects = [
+  {
+    title: "Job4U",
+    category: "Career & Hiring Platform",
+    description:
+      "A complete LinkedIn-inspired career and hiring platform built during my Flutter Internship with TechMastery. Engineered with comprehensive features for both candidates and employers: full recruitment pipeline with job postings, active applicant tracking (ATS), candidate discovery & profile inspection, real-time analytics dashboard with application stats, and streamlined job search and application flows.",
+    cover: job4uCover,
+    repo: "https://github.com/omarbadawiii-91/findwork_flutter",
+    tags: ["Flutter", "Clean Architecture", "Recruitment Platform", "ATS & Analytics", "TechMastery"],
+  },
   {
     title: "Leo Clinic",
     category: "Healthcare platform",
@@ -148,6 +159,7 @@ const projects = [
 ];
 
 const learningArchive: { label: string; cert?: string }[] = [
+  { label: "Flutter Internship Program — TechMastery · Jul 2026 – Nov 2026", cert: certTechMastery },
   { label: "Mobile App Development using Flutter — ITI · Sep 2025 · 120hrs", cert: certFlutterDart },
   { label: "Gen AI — ITI · Dec 2025", cert: certITIGenAI },
   { label: "UI/UX Design — National Telecommunication Institute (NTI)", cert: certUIUX },
@@ -169,6 +181,7 @@ const learningArchive: { label: string; cert?: string }[] = [
 ];
 
 const achievements: { title: string; source: string; topics: string[]; cert?: string }[] = [
+  { title: "Flutter Internship · TechMastery", source: "TechMastery", topics: ["Flutter", "Clean Architecture", "API Integration", "State Management", "Git & Teamwork"], cert: certTechMastery },
   { title: "Mobile App Development · ITI", source: "ITI", topics: ["Dart", "OOP", "Flutter", "API Integration", "Bloc", "Firebase", "Git"], cert: certITI },
   { title: "Deep Dive into Clean Architecture in Flutter", source: "Udemy", topics: ["Dependency Injection", "Reactive Programming", "SOLID", "Maintainable Flutter"], cert: certDeepDive },
   { title: "Flutter Payment Integration", source: "Udemy", topics: ["Stripe", "PayPal", "Payment Systems", "Gateway Selection"], cert: certFlutterPayment },
@@ -611,7 +624,7 @@ function Portfolio() {
         <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
           <div data-reveal className="reveal flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
             <div><p className="section-label">04 / Learning achievements</p><h2 className="mt-5 text-4xl font-semibold sm:text-6xl">Proof of steady progress.</h2></div>
-            <p className="font-mono text-[10px] uppercase text-muted-foreground">18 certificates & courses</p>
+            <p className="font-mono text-[10px] uppercase text-muted-foreground">{learningArchive.length} certificates & courses</p>
           </div>
           <div className="mt-14 grid gap-3 md:grid-cols-2">
             {achievements.map((achievement, index) => (
